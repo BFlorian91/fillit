@@ -6,7 +6,7 @@
 #    By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/09 16:42:03 by flbeaumo          #+#    #+#              #
-#    Updated: 2019/01/10 23:54:23 by florian          ###   ########.fr        #
+#    Updated: 2019/01/11 00:40:35 by florian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,22 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(OBJ)
 	@$(CC) $(SRCS) $(LIBFT) -o $(NAME) $(CFLAGS)
+	@echo "\\033[1;34m FILLIT\033[0m				\033[0;32m[SUCESS] \033[0m"
 
-%.o: %.c
+%.o: %.c $(LIBFT)
 	@$(CC) -o $@ -c $< $(CFLAGS) -I $(HEADER)
 	@echo "\033[0;33m Compiling:\033[0m			\033[0;32m [OK] \033[0m" $<
 
+$(LIBFT):
+	@make -C ./libft/
 clean:
 	@rm -rf $(OBJ)
+	@make clean -C ./libft/
 	@echo "\033[1;31m Remove Object:\033[0m			\033[0;32m [OK] \033[0m" $<
 
 fclean: clean
 	@rm -rf $(NAME)
+	@make fclean -C ./libft/
 	@echo "\033[1;31m Remove Binary:\033[0m			\033[0;32m [OK] \033[0m"
 
 re: fclean all
