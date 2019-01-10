@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/10 19:49:22 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/10 23:09:06 by florian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 int		main(int ac, char **av)
 {
-	t_tri *lst;
-	int fd;
-	int i = 0;
+	int		fd;
+	t_tri	*lst;
+	int		i;
 
-	fd = open(av[1], O_RDONLY);
-	lst = parsing(fd);
-	while (lst != NULL)
+	if (ac == 2)
 	{
-		i = 0;
-		ft_putchar(lst->c);
-		ft_putchar('\n');
-		while (i < 4)
+		fd = open(av[1], O_RDONLY);
+		lst = parsing(fd);
+		while (lst)
 		{
-			printf("%d [x:%d, y:%d]\n", i, lst->pos[i].x, lst->pos[i].y);
-			i++;
+			i = 0;
+			ft_putchar(lst->c);
+			ft_putchar('\n');
+			while (i < 4)
+			{
+				printf("%d [x:%d, y:%d]\n", i, lst->pos[i].x, lst->pos[i].y);
+				i++;
+			}
+			lst = lst->next;
 		}
-		lst = lst->next;
 	}
+	return (0);
 }

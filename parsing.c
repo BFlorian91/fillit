@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 17:00:02 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/10 19:49:21 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/10 23:16:36 by florian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_tri		*parsing(int fd)
 	char c;
 
 	c = 'A';
+	buf = NULL;
 	while (read(fd, buf, 21))
 	{
 		x = 0;
