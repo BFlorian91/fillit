@@ -6,7 +6,11 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/01/10 19:52:04 by flbeaumo         ###   ########.fr       */
+=======
+/*   Updated: 2019/01/11 00:07:01 by florian          ###   ########.fr       */
+>>>>>>> 0ade4368ff6f8c764dc188b85b3e4fe598d47969
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +18,9 @@
 
 int		main(int ac, char **av)
 {
-	t_tri *lst;
-	int fd;
-	int i = 0;
+	int		fd;
+	t_tri	*lst;
+	int		i;
 
 	if (ac == 2)
 	{
@@ -35,4 +39,5 @@ int		main(int ac, char **av)
 			lst = lst->next;
 		}
 	}
+	return (0);
 }
