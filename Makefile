@@ -6,13 +6,13 @@
 #    By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/09 16:42:03 by flbeaumo          #+#    #+#              #
-#    Updated: 2019/01/09 16:43:17 by flbeaumo         ###   ########.fr        #
+#    Updated: 2019/01/10 19:59:58 by flbeaumo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRCS = main.c
+SRCS = main.c parsing.c
 
 OBJ = $(SRCS:.c=.o)
 
@@ -23,13 +23,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(OBJ)
-	@make -C $(LIBFT)
-	@cp libft/libft.a ./$(NAME)
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
-
+	$(NAME)
 %.o: %.c
-	@$(CC) -o $@ -c $< $(CFLAGS) -I $(HEADER)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
 	@rm -rf $(OBJ)
