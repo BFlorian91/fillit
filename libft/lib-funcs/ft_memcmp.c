@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/11 12:02:31 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/11/20 15:03:16 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	x;
-	int	y;
-}				t_point;
+	size_t			i;
+	unsigned char	*source_1;
+	unsigned char	*source_2;
 
-typedef struct 	s_tri
-{
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	i = 0;
+	if (n == 0)
+		return (0);
+	source_1 = (unsigned char *)s1;
+	source_2 = (unsigned char *)s2;
+	if (*source_1 == *source_2 && !n)
+		return (0);
+	while (*source_1++ == *source_2++ && n-- && n)
+		;
+	return (*--source_1 - *--source_2);
+}

@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/08 18:32:44 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/11/20 12:50:58 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+char	*ft_strcpy(char *dst, const char *src)
 {
-	int	x;
-	int	y;
-}				t_point;
+	int i;
 
-typedef struct 	s_tri
-{
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		++i;
+	}
+	dst[i] = '\0';
+	return (dst);
+}

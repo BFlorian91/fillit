@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/19 12:19:09 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/11/21 16:04:45 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	int	x;
-	int	y;
-}				t_point;
+	t_list	*current;
+	t_list	*next;
 
-typedef struct 	s_tri
-{
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	current = *alst;
+	while (current)
+	{
+		next = current->next;
+		del(current->content, current->content_size);
+		free(current);
+		current = next;
+	}
+	*alst = NULL;
+}

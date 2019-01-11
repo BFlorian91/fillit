@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/13 10:49:38 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/11/20 15:35:42 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+void	ft_putnbr(int n)
 {
-	int	x;
-	int	y;
-}				t_point;
-
-typedef struct 	s_tri
-{
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	if (n < 0)
+	{
+		ft_putchar('-');
+		if (n == -2147483648)
+		{
+			ft_putstr("2147483648");
+			return ;
+		}
+		n *= -1;
+	}
+	if (n > 9)
+		ft_putnbr(n / 10);
+	ft_putchar(n % 10 + '0');
+}

@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/09 09:30:18 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/11/20 12:52:10 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+char	*ft_strcat(char *s1, const char *s2)
 {
-	int	x;
-	int	y;
-}				t_point;
+	int i;
+	int j;
 
-typedef struct 	s_tri
-{
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	i = 0;
+	j = 0;
+	while (s1[i])
+		++i;
+	while (s2[j])
+	{
+		s1[i + j] = s2[j];
+		++j;
+	}
+	s1[i + j] = '\0';
+	return (s1);
+}

@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/13 11:33:41 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/11/21 14:24:52 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+static void	nbr_nolomit(long n, int fd)
 {
-	int	x;
-	int	y;
-}				t_point;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	if (n > 9)
+		nbr_nolomit(n / 10, fd);
+	ft_putchar_fd(n % 10 + '0', fd);
+}
 
-typedef struct 	s_tri
+void		ft_putnbr_fd(int n, int fd)
 {
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	nbr_nolomit(n, fd);
+}

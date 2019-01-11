@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/08 10:35:05 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/11/20 14:06:10 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int	x;
-	int	y;
-}				t_point;
+	size_t			i;
+	unsigned char	*dest;
+	unsigned char	*source;
 
-typedef struct 	s_tri
-{
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	i = 0;
+	dest = (unsigned char *)dst;
+	source = (unsigned char *)src;
+	while (i < n)
+	{
+		dest[i] = source[i];
+		if (dest[i] == (unsigned char)c)
+			return (dst + i + 1);
+		++i;
+	}
+	return (NULL);
+}

@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/13 15:23:08 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/12/12 18:26:10 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	x;
-	int	y;
-}				t_point;
+	size_t	size;
+	char	*str;
+	int		i;
+	int		j;
 
-typedef struct 	s_tri
-{
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	if (!s1 || !s2)
+		return (NULL);
+	size = ft_strlen((char *)s1) + ft_strlen((char *)s2);
+	if (!(str = (char *)malloc(size + 1)))
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		++i;
+	}
+	while (s2[j])
+	{
+		str[i + j] = s2[j];
+		++j;
+	}
+	str[i + j] = '\0';
+	return (str);
+}

@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/12 16:08:05 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/11/20 12:41:00 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	x;
-	int	y;
-}				t_point;
+	size_t n;
 
-typedef struct 	s_tri
-{
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	n = ft_strlen((char *)needle);
+	if (!(*needle))
+		return ((char *)haystack);
+	while (*haystack && len >= n)
+	{
+		if (!ft_memcmp(haystack++, needle, n))
+			return ((char *)--haystack);
+		--len;
+	}
+	return (0);
+}

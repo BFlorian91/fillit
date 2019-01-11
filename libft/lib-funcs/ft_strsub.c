@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:49 by flbeaumo         ###   ########.fr       */
+/*   Created: 2018/11/13 15:01:50 by flbeaumo          #+#    #+#             */
+/*   Updated: 2018/12/12 18:01:01 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include "libft/includes/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct	s_point
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	int	x;
-	int	y;
-}				t_point;
+	char	*str;
+	size_t	i;
 
-typedef struct 	s_tri
-{
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
-}				t_tri;
-
-t_tri *parse(char *av);
-
-
-#endif
+	if (!s)
+		return (NULL);
+	if (!(str = (char *)malloc(len + 1)))
+		return (NULL);
+	i = 0;
+	while (len)
+	{
+		str[i] = s[start];
+		++start;
+		++i;
+		--len;
+	}
+	str[i] = '\0';
+	return (str);
+}
