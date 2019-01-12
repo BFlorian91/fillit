@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 17:00:02 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/12 02:55:05 by florian          ###   ########.fr       */
+/*   Updated: 2019/01/12 15:46:54 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ t_tri			*parse(char *av)
 	char	c;
 
 	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		return (-1);
 	c = 'A';
 	lst_tetri = NULL;
 	while ((ret = read(fd, buffer, 21)))
