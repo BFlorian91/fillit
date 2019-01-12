@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/12 15:05:52 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/12 15:45:56 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int			input(char *av)
 	char	buf[21];
 
 	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		return (-1);
 	while ((ret = read(fd, buf, 21)))
 	{
 		buf[ret] = '\0';
