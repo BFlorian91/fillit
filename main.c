@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/12 03:22:07 by florian          ###   ########.fr       */
+/*   Updated: 2019/01/12 15:04:13 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		if (read_file(av[1]))
+		if (input(av[1]))
 		{
 			lst = parse(av[1]);
 			while (lst != NULL)
