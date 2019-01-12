@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/12 15:45:56 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/12 16:10:35 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,9 @@ static int	check_block(char *buf)
 	line = 0;
 	while (i < 20)
 	{
-		if (buf[i] == '\n')
-			line++;
-		if (buf[i] == '.')
-			dot++;
-		if (buf[i] == '#')
-			sharp++;
+		buf[i] == '\n' ? line++ : line;
+		buf[i] == '.' ? dot++ : dot;
+		buf[i] == '#' ? sharp++ : sharp;
 		i++;
 	}
 	if (dot != 12 || sharp != 4 || line != 4)
@@ -51,14 +48,10 @@ int			check_tetri(char *buf)
 	{
 		if (buf[i] == '#')
 		{
-			if ((i + 1) < 20 && buf[i + 1] == '#')
-				count++;
-			if ((i - 1) >= 0 && buf[i - 1] == '#')
-				count++;
-			if ((i + 5) < 20 && buf[i + 5] == '#')
-				count++;
-			if ((i - 5) >= 0 && buf[i - 5] == '#')
-				count++;
+			(i + 1) < 20 && buf[i + 1] == '#' ? count++ : count;
+			(i - 1) >= 0 && buf[i - 1] == '#' ? count++ : count;
+			(i + 5) < 20 && buf[i + 5] == '#' ? count++ : count;
+			(i - 5) >= 0 && buf[i - 5] == '#' ? count++ : count;
 		}
 		i++;
 	}
