@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 18:40:59 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/12 00:53:47 by florian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		main(int ac, char **av)
 		while (lst != NULL)
 		{
 			i = 0;
+			ft_putchar('\n');
 			ft_putchar(lst->c);
 			ft_putchar('\n');
 			while (i < 4)

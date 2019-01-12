@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 17:00:02 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/11 19:51:39 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/12 02:55:05 by florian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ t_tri			*parse(char *av)
 		lst_tetri = new_tetri(lst_tetri, buffer, c);
 		c++;
 	}
+	close(fd);
 	return (lst_tetri);
 }
