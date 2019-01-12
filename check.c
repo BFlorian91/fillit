@@ -6,11 +6,57 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/12 16:10:35 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/12 19:36:37 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+char	mapping(char *buf, int cnt_tetri)
+{
+	int		count_sharp;
+	int		size_of_map;
+	int		i;
+	int		j;
+	char	map[4][4];
+
+	count_sharp = 0;
+	size_of_map = 0;
+	i = 0;
+	while (*buf)
+	{
+		if (*buf == '#')
+			count_sharp++;
+		buf++;
+	}
+	size_of_map = ft_sqrt(count_sharp * cnt_tetri);
+	while (i < size_of_map)
+	{
+		j = 0;
+		while (j < size_of_map)
+			map[i][j++] = '.';
+		i++;
+	}
+	return (size_of_map);
+}
+
+void	display_map(int size_of_map)
+{
+	int 	i;
+	int 	j;
+	char 	map[4][4];
+
+	i = 0;
+	while (i < size_of_map)
+	{
+		j = 0;
+		ft_putchar('\n');
+		while (j < size_of_map)
+			ft_putchar(map[i][j++]);
+		i++;
+	}
+		ft_putchar('\n');
+}
 
 static int	check_block(char *buf)
 {
@@ -37,7 +83,7 @@ static int	check_block(char *buf)
 	return (line);
 }
 
-int			check_tetri(char *buf)
+static int	check_tetri(char *buf)
 {
 	int i;
 	int count;
@@ -63,8 +109,11 @@ int			input(char *av)
 	int		fd;
 	int		ret;
 	char	buf[21];
+	int 	test;
+	int		cnt_tetri;
 
 	fd = open(av, O_RDONLY);
+	cnt_tetri = 0;
 	if (fd == -1)
 		return (-1);
 	while ((ret = read(fd, buf, 21)))
@@ -74,7 +123,10 @@ int			input(char *av)
 			return (0);
 		if (!check_tetri(buf))
 			return (0);
+		cnt_tetri++;
 	}
+	test = mapping(buf, cnt_tetri);
+	display_map(test);
 	close(fd);
 	return (1);
 }
