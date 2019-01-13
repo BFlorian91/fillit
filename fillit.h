@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/13 12:15:11 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/13 20:39:03 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ typedef struct 	s_tri
 }				t_tri;
 
 t_tri	*parse(char *av);
-t_tri	clean_lst(t_tri lst);
+t_tri	*clean_lst(t_tri *lst);
 int		input(char *av);
 t_map   *create_map(int size);
 void    print_map(t_map *map);
+void	ft_display(t_tri *lst);
 
 #endif
