@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/13 13:29:28 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/13 20:10:33 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ t_map  *create_map(int size)
     }
     return (map);
 }
-
+//faire une fonction qui ajoutes les teriminos dans la map
 
