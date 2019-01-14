@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 20:25:32 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 20:49:57 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int		main(int ac, char **av)
 			while (lst)
 			{
 				solving(&lst, map, size);
-				ft_putendl("test");
 				lst = lst->next;
 			}
 			print_map(map, size);
