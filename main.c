@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 20:49:57 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 23:37:26 by florian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int		main(int ac, char **av)
 			}
 			print_map(map, size);
 		}
+		else
+			ft_putstr("Error");
 	}
 	return (0);
 }
