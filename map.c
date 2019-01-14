@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/13 20:33:30 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 16:36:07 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,45 @@
 //[Thibault] faire une fonction qui détruit tout les éléments de notre tab[i] utilisé ft_memdel ont délete tout en mémoire
 //[Florian] Si tu fais une alloc dyn je pense plutot a un strdel perso (FREE + NULL) faut voir memdel peut se tenter aussi a check ce qui est mieux..
 
-void	print_map(t_map *map)
+void	print_map(char **map)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (i < map->size)
+	j = 0;
+/*	while (map[i])
 	{
-		ft_putstr(map->tab[i]);
+		ft_putstr(&map[i]);
+		ft_putchar('\n');
+		i++;
+	}
+*/
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+			ft_putchar(map[i][j++]);
 		ft_putchar('\n');
 		i++;
 	}
 }
 
-t_map	*create_map(int size)
+char	**create_map(int size)
 {
 	int		i;
 	int		j;
-	t_map	*map;
-
-	map = (t_map *)malloc(sizeof(t_map));
-	map->size = size;
-	map->tab = (char **)malloc(sizeof(char *) * size);
+	char	**map;
+	map = (char **)malloc(sizeof(*map) * (size + 1));
 	i = 0;
 	while (i < size)
 	{
 		j = 0;
-		map->tab[i] = ft_strnew(size);
+		map[i] = ft_strnew(size);
+		map[i][size] = '\0';
 		while (j < size)
 		{
-			map->tab[i][j] = '.';
+			map[i][j] = '.';
 			j++;
 		}
 		i++;

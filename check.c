@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/13 21:04:21 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 01:14:24 by florian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ int			input(char *av)
 	char	buf[21];
 	int 	size;
 	int		cnt_tetri;
+//	t_map	*map;
 
-	t_map	*map;
 	fd = open(av, O_RDONLY);
 	cnt_tetri = 0;
 	if (fd == -1)
@@ -127,9 +127,9 @@ int			input(char *av)
 		cnt_tetri++;
 	}
 	size = mapping(buf, cnt_tetri);
-	map = (t_map*)malloc(sizeof(char *) * size);
-	map = create_map(size);
-	print_map(map);
+//	map = (t_map*)malloc(sizeof(char *) * size);
+//	map = create_map(size);
+//	print_map(map);
 	close(fd);
 	return (1);
 }

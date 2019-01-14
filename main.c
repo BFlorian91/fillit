@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/13 20:34:19 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 16:36:04 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 int		main(int ac, char **av)
 {
 	t_tri	*lst;
+	char	**map;
+	int		size;
+	int		i;
 
+	map = NULL;
+	size = 10;
+	map = create_map(size);
+	i = 4;
 	if (ac != 2)
 	{
 		ft_putstr("usage: fillit input_file\n");
@@ -26,7 +33,12 @@ int		main(int ac, char **av)
 		if (input(av[1]))
 		{
 			lst = parse(av[1]);
-			ft_display(lst);
+			while (lst)
+			{
+				solving(&lst, map, size);
+				lst = lst->next;
+			}
+			print_map(map);
 		}
 		else
 			printf("ERROR!\n");
