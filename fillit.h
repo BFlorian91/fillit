@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/13 12:15:11 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/14 20:16:37 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct  s_map
+/*
+typedef struct	s_map
 {
-        int     size;
-        char    **tab;
-}                               t_map;
+	int		size;
+	char	**tab;
+}				t_map;
+*/
 
 typedef struct	s_point
 {
@@ -30,17 +32,20 @@ typedef struct	s_point
 	int	y;
 }				t_point;
 
-typedef struct 	s_tri
+typedef	struct	s_tri
 {
-	char c;
-	t_point pos[4];
-	struct s_tri *next;
+	char			c;
+	t_point			pos[4];
+	struct s_tri	*next;
 }				t_tri;
 
-t_tri	*parse(char *av);
-t_tri	clean_lst(t_tri lst);
-int		input(char *av);
-t_map   *create_map(int size);
-void    print_map(t_map *map);
+t_tri			*parse(char *av);
+t_tri			*clean_lst(t_tri *lst);
+int				input(char *av);
+char			**create_map(int size);
+void			print_map(char **map, int size);
+void			ft_display(t_tri *lst);
+void			place_t(t_tri *lst, char **map, int i, int j);
+int				solving(t_tri **tetriminos, char **map, int size);
 
 #endif

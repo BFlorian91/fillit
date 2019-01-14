@@ -6,58 +6,12 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/13 12:21:24 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/14 20:37:19 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	mapping(char *buf, int cnt_tetri)
-{
-	int		count_sharp;
-	int		size_of_map;
-	int		i;
-	int		j;
-	char	map[4][4];
-
-	count_sharp = 0;
-	size_of_map = 0;
-	i = 0;
-	while (*buf)
-	{
-		if (*buf == '#')
-			count_sharp++;
-		buf++;
-	}
-	size_of_map = ft_sqrt(count_sharp * cnt_tetri);
-	while (i < size_of_map)
-	{
-		j = 0;
-		while (j < size_of_map)
-			map[i][j++] = '.';
-		i++;
-	}
-	return (size_of_map);
-}
-/*
-void	display_map(int size_of_map)
-{
-	int 	i;
-	int 	j;
-	char 	map[4][4];
-
-	i = 0;
-	while (i < size_of_map)
-	{
-		j = 0;
-		ft_putchar('\n');
-		while (j < size_of_map)
-			ft_putchar(map[i][j++]);
-		i++;
-	}
-		ft_putchar('\n');
-}
-*/
 static int	check_block(char *buf)
 {
 	int i;
@@ -109,9 +63,8 @@ int			input(char *av)
 	int		fd;
 	int		ret;
 	char	buf[21];
-	int 	size;
 	int		cnt_tetri;
-        t_map    *map;
+
 	fd = open(av, O_RDONLY);
 	cnt_tetri = 0;
 	if (fd == -1)
@@ -125,10 +78,6 @@ int			input(char *av)
 			return (0);
 		cnt_tetri++;
 	}
-	size = mapping(buf, cnt_tetri);
-        map = (t_map*)malloc(sizeof(char *) * size);
-	map = create_map(size);
-        print_map(map);
 	close(fd);
-	return (1);
+	return (ft_sqrt(4 * cnt_tetri));
 }

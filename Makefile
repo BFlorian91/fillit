@@ -6,13 +6,13 @@
 #    By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/09 16:42:03 by flbeaumo          #+#    #+#              #
-#    Updated: 2019/01/13 13:51:53 by bod              ###   ########.fr        #
+#    Updated: 2019/01/14 01:07:55 by florian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRCS = main.c parsing.c check.c map.c
+SRCS = main.c parsing.c check.c map.c func.c solving.c
 
 OBJ = $(SRCS:.c=.o)
 

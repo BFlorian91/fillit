@@ -6,49 +6,55 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/13 20:10:33 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/14 20:54:12 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-//faire une fonction qui détruit tout les éléments de notre tab[i] utilisé ft_memdel ont délete tout en mémoire
+//[Thibault] faire une fonction qui détruit tout les éléments de notre tab[i] utilisé ft_memdel ont délete tout en mémoire
+//[Florian] Si tu fais une alloc dyn je pense plutot a un strdel perso (FREE + NULL) faut voir memdel peut se tenter aussi a check ce qui est mieux..
 
-void    print_map(t_map *map)
+void	print_map(char **map, int size)
 {
-    int i;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (i < map->size)
-    {
-        ft_putstr(map->tab[i]);
-        ft_putchar('\n');
-        i++;
-    }
-} 
-
-t_map  *create_map(int size)
-{
-    int i;
-    int j;
-    t_map *map;
-    
-    map = (t_map *)malloc(sizeof(t_map));
-    map->size = size;
-    map->tab = (char **)malloc(sizeof(char *) * size);
-    i = 0;
-    while (i < size)
-    {
-        j = 0;
-        map->tab[i] = ft_strnew(size);
-        while (j < size)
-        {
-            map->tab[i][j] = '.';
-            j++;
-        }
-        i++;
-    }
-    return (map);
+	i = 0;
+	j = 0;
+/*	while (map[i])
+	{
+		ft_putstr(&map[i]);
+		ft_putchar('\n');
+		i++;
+	}
+*/
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+			ft_putchar(map[i][j++]);
+		ft_putchar('\n');
+		i++;
+	}
 }
-//faire une fonction qui ajoutes les teriminos dans la map
 
+char	**create_map(int size)
+{
+	int		i;
+	int		j;
+	char	**map;
+
+	map = (char **)malloc(sizeof(char *) * (size + 1));
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j <= size)
+			map[i][j++] = '.';
+		i++;
+	}
+    map[i][j] = '\0';
+    
+	return (map);
+}
