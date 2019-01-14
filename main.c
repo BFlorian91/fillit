@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 17:22:38 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 18:32:53 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		main(int ac, char **av)
 	{
 		if ((size = input(av[1])))
 		{
-			map = create_map(size + 3);
+			map = create_map(size);
 			lst = parse(av[1]);
 			while (lst)
 			{
@@ -38,8 +38,6 @@ int		main(int ac, char **av)
 			}
 			print_map(map);
 		}
-		else
-			printf("ERROR!\n");
 	}
 	return (0);
 }

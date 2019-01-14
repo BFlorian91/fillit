@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 17:16:43 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 18:32:58 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ char	**create_map(int size)
 		map[i] = ft_strnew(size);
 		map[i][size] = '\0';
 		while (j < size)
-		{
-			map[i][j] = '.';
-			j++;
-		}
+			map[i][j++] = '.';
 		i++;
 	}
 	return (map);

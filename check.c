@@ -6,39 +6,11 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 17:20:12 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 18:33:03 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int			mapping(char *buf, int cnt_tetri)
-{
-	int		count_sharp;
-	int		size_of_map;
-	int		i;
-	int		j;
-	char	map[4][4];
-
-	count_sharp = 0;
-	size_of_map = 0;
-	i = 0;
-	while (*buf)
-	{
-		if (*buf == '#')
-			count_sharp++;
-		buf++;
-	}
-	size_of_map = ft_sqrt(count_sharp * cnt_tetri);
-	while (i < size_of_map)
-	{
-		j = 0;
-		while (j < size_of_map)
-			map[i][j++] = '.';
-		i++;
-	}
-	return (size_of_map);
-}
 
 static int	check_block(char *buf)
 {
@@ -92,7 +64,6 @@ int			input(char *av)
 	int		ret;
 	char	buf[21];
 	int		cnt_tetri;
-	int		size;
 
 	fd = open(av, O_RDONLY);
 	cnt_tetri = 0;
@@ -107,10 +78,6 @@ int			input(char *av)
 			return (0);
 		cnt_tetri++;
 	}
-	size = mapping(buf, cnt_tetri);
-//	map = (t_map*)malloc(sizeof(char *) * size);
-//	map = create_map(size);
-//	print_map(map);
 	close(fd);
-	return (size);
+	return (ft_sqrt(4 * cnt_tetri));
 }
