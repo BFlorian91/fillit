@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 16:36:07 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:16:43 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	**create_map(int size)
 	int		i;
 	int		j;
 	char	**map;
+
 	map = (char **)malloc(sizeof(*map) * (size + 1));
 	i = 0;
 	while (i < size)

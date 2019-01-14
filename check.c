@@ -6,13 +6,13 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 01:14:24 by florian          ###   ########.fr       */
+/*   Updated: 2019/01/14 17:20:12 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	mapping(char *buf, int cnt_tetri)
+int			mapping(char *buf, int cnt_tetri)
 {
 	int		count_sharp;
 	int		size_of_map;
@@ -39,25 +39,7 @@ char	mapping(char *buf, int cnt_tetri)
 	}
 	return (size_of_map);
 }
-/*
-void	display_map(int size_of_map)
-{
-	int 	i;
-	int 	j;
-	char 	map[4][4];
 
-	i = 0;
-	while (i < size_of_map)
-	{
-		j = 0;
-		ft_putchar('\n');
-		while (j < size_of_map)
-			ft_putchar(map[i][j++]);
-		i++;
-	}
-		ft_putchar('\n');
-}
-*/
 static int	check_block(char *buf)
 {
 	int i;
@@ -109,9 +91,8 @@ int			input(char *av)
 	int		fd;
 	int		ret;
 	char	buf[21];
-	int 	size;
 	int		cnt_tetri;
-//	t_map	*map;
+	int		size;
 
 	fd = open(av, O_RDONLY);
 	cnt_tetri = 0;
@@ -131,5 +112,5 @@ int			input(char *av)
 //	map = create_map(size);
 //	print_map(map);
 	close(fd);
-	return (1);
+	return (size);
 }

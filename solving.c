@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:47:40 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 16:36:05 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/14 16:43:22 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		solving(t_tri **tetriminos, char **map, int size)
 	{
 		j = 0;
 		while (j < size)
-
+		{
 			if (map[i][j] == '.')
 			{
 				place_t(*tetriminos, map, i, j);
