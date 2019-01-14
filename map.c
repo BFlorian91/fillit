@@ -6,14 +6,11 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 20:54:12 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/14 22:53:51 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-//[Thibault] faire une fonction qui détruit tout les éléments de notre tab[i] utilisé ft_memdel ont délete tout en mémoire
-//[Florian] Si tu fais une alloc dyn je pense plutot a un strdel perso (FREE + NULL) faut voir memdel peut se tenter aussi a check ce qui est mieux..
 
 void	print_map(char **map, int size)
 {
