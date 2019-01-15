@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:47:40 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/15 01:30:38 by florian          ###   ########.fr       */
+/*   Updated: 2019/01/15 16:23:48 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,21 @@ static void		remove_t(t_tri *lst, char **map, int i, int j)
  * BACKTRACK HERE
  */
 
-int		solving(t_tri *minos, char **map, int size)
+
+int    solve(t_tri *minos, char **map, int size)
+{
+	char 	**new_map;
+
+	new_map = map;
+	while (backtrack(minos, new_map, size) == 0)
+	{
+		delete_map(map);
+		new_map = create_map(size + 1);
+	}
+	return (0);
+}
+
+int		backtrack(t_tri *minos, char **map, int size)
 {
 	int i;
 	int j;
@@ -69,18 +83,14 @@ int		solving(t_tri *minos, char **map, int size)
 			if (can_place(map, minos, i, j, size))
 			{
 				place_t(minos, map, i, j);
-			//	if (minos->next == NULL || solving(start, map, size) == 1)       // <--- NEW not working.
-			//	{
-			//		ft_putendl("if == 1");		// <--- NEW test;
+				if (minos->next == NULL || backtrack(minos->next, map, size) == 1)       // <--- NEW not working.
+				{
+					ft_putendl("if == 1");		// <--- NEW test;
 					return (1);
-			//	}
-			//	ft_putendl("else == 1");		// <--- NEW test;
+				}
+				printf("REMOVE: %c", minos->c);		// <--- NEW test;
 				remove_t(minos, map, i, j);		// <--- NEW;
 			}
-			//else
-				// function resize map
-				// free old map -> allocate x/y + 1 for new map.
-				// call solving again.
 			i++;
 		}
 		j++;

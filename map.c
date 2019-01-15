@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 20:15:46 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/15 16:23:45 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@ void	print_map(char **map, int size)
 
 	i = 0;
 	j = 0;
-/*	while (map[i])
-	{
-		ft_putstr(&map[i]);
-		ft_putchar('\n');
-		i++;
-	}
-*/
 	while (i < size)
 	{
 		j = 0;
@@ -37,6 +30,16 @@ void	print_map(char **map, int size)
 		ft_putchar('\n');
 		i++;
 	}
+}
+
+void	delete_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
 }
 
 char	**create_map(int size)
