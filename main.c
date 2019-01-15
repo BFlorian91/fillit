@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/14 20:48:46 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/15 18:26:02 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,17 @@ int		main(int ac, char **av)
 		if ((size = input(av[1])))
 		{
 			map = create_map(size);
-			lst = parse(av[1]);
-			while (lst)
+                printf("Debug2\n");
+		    lst = parse(av[1]);
+		    while (lst)
 			{
-				solving(&lst, map, size);
-				ft_putendl("test");
+				solve(lst, map, size);
 				lst = lst->next;
 			}
 			print_map(map, size);
 		}
+		else
+			ft_putstr("Error");
 	}
 	return (0);
 }
