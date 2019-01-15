@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/15 16:23:45 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/15 16:39:37 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ void	delete_map(char **map)
 	int	i;
 
 	i = 0;
-	while (map[i])
-		free(map[i++]);
-	free(map);
+	if (map && *map)
+	{
+		while (map[i])
+			free(map[i++]);
+		free(map);
+	}
 }
 
 char	**create_map(int size)
