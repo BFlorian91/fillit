@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:47:40 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/16 21:26:38 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/16 01:19:27 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ static void		remove_t(t_tri *lst, char **map, int i, int j)
 
 int     solve(t_tri *minos, char **map, int size)
 {
-        if (backtrack(minos,map,size) == 1)
-            map = resize_map(map,size);
-
-        return(backtrack(minos->next,map,size++)); 
+   while (backtrack(minos->next,map,size++) == 0)
+       ;
+   return(0);
 }
 /*
  * BACKTRACK HERE

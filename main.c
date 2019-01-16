@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/16 00:54:24 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/16 21:14:44 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int		main(int ac, char **av)
             printf("sorti !! ");
             printf("%d",size);
 			print_map(map, size);
-            delete_map(map);
 		}
 		else
 			ft_putstr("Error");
