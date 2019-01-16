@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:47:40 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/16 00:38:54 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/16 01:19:27 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static int	can_place(char **map, t_tri *minos,int i, int j, int size)
 	int k;
 
 	k = 0;
-    size--;
 	while (k < 4)
 	{
 		if (i + minos->pos[k].x < 0 || i + minos->pos[k].x >= size)
@@ -34,7 +33,7 @@ static int	can_place(char **map, t_tri *minos,int i, int j, int size)
 	return (1);
 }
 
-void		place_t(t_tri *lst, char **map, int i, int j)
+static void		place_t(t_tri *lst, char **map, int i, int j)
 {
 	map[j][i] = lst->c;
 	map[j + lst->pos[1].y][i + lst->pos[1].x] = lst->c;	
@@ -50,6 +49,12 @@ static void		remove_t(t_tri *lst, char **map, int i, int j)
    map[j + lst->pos[3].y][i + lst->pos[3].x] = '.';
 }
 
+int     solve(t_tri *minos, char **map, int size)
+{
+   while (backtrack(minos->next,map,size++) == 0)
+       ;
+   return(0);
+}
 /*
  * BACKTRACK HERE
  */
@@ -59,12 +64,12 @@ int		backtrack(t_tri *minos, char **map, int size)
     int i;
     int j;
 
-    j = 0;
+    i = 0;
 	start = minos;
-	while (j < size)
+	while (i < size)
 	{    
-        i = 0;
-		while (i < size)
+        j = 0;
+		while (j < size)
 		{
 			if (can_place(map, minos,i,j, size))
             {
@@ -76,9 +81,9 @@ int		backtrack(t_tri *minos, char **map, int size)
 				}
                 remove_t(minos, map, i, j);		// <--- NEW;
             }
-			i++;
+			j++;
 		}
-		j++;
+		i++;
 	}
 	return (0);
 }
