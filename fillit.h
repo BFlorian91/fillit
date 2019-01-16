@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/15 19:50:42 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/16 19:30:48 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ char			**create_map(int size);
 void			print_map(char **map, int size);
 void			ft_display(t_tri *lst);
 void			place_t(t_tri *lst, char **map, int i, int j);
-int				backtrack(t_tri **tetriminos, char **map, int size, char c);
-int    			solve(t_tri *minos, char **map, int size, char c);
-void			delete_map(char **map);
+int				solving(t_tri *tetriminos, char **map, int size);
+char			**resize_map(char **map, int size);
 
 #endif

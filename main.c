@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/15 19:50:40 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/16 19:31:14 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int		main(int ac, char **av)
 {
 	t_tri	*lst;
+	t_tri	*start;
 	char	**map;
 	int		size;
 	int		i;
-	char 	c;
 
 	i = 4;
-	c = 'A';
+	lst = NULL;
+	start = lst;
 	if (ac != 2)
 	{
 		ft_putstr("usage: fillit input_file\n");
@@ -31,16 +32,25 @@ int		main(int ac, char **av)
 	{
 		if ((size = input(av[1])))
 		{
+			printf("Taille de la map (ORIGIN): %d\n\n", size);
 			map = create_map(size);
 			lst = parse(av[1]);
-			ft_putendl("if == 1");		// <--- NEW test;
-			if (!backtrack(&lst, map, size, c))
-				ft_putendl("Work?");
+			while (lst)
+			{
+				if (!solving(lst, map, size))
+				{
+					ft_putendl("1 - Solving -> FAIL\n");
+					ft_putendl("2 - Resize map\n");
+					map = resize_map(map, size++);
+					printf("Taille de la map (RESIZE): %d\n\n", size);
+					printf("Piece implacable:\t%c\n", lst->c);
+				}
+				else
+					ft_putendl("3 - Solving -> OK\n");
+				lst = lst->next;
+			}
 			print_map(map, size);
-			delete_map(map);
 		}
-		else
-			ft_putstr("Error");
 	}
 	return (0);
 }
