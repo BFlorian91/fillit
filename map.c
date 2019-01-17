@@ -6,53 +6,37 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/17 14:01:46 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/17 21:07:49 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	print_map(char **map, int size)
+void	print_map(t_map map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	if (map && *map)
+	while (i < map.size)
 	{
-		while (i < size)
-		{
-			j = 0;
-			while (j < size)
-				ft_putchar(map[i][j++]);
-			ft_putchar('\n');
-			i++;
-		}
+		j = 0;
+		while (j < map.size)
+			ft_putchar(map.map[i][j++]);
+		ft_putchar('\n');
+		i++;
 	}
 }
 
-char	**resize_map(char **map, int size)
-{
-	char	**new_map;
-
-	clean_map(map);
-	if ((new_map = create_map(size)) == NULL)
-		return (NULL);
-	return (new_map);
-}
-
-void	clean_map(char **map)
+void	clean_map(t_map map)
 {
 	int	i;
 
 	i = 0;
-	if (map && *map)
-	{
-		while (map[i])
-			free(map[i++]);
-		free(map);
-	}
+	while (map.map[i])
+		free(map.map[i++]);
+	free(map.map);
 }
 
 char	**create_map(int size)
@@ -61,7 +45,8 @@ char	**create_map(int size)
 	int		j;
 	char	**map;
 
-	map = (char **)malloc(sizeof(char *) * (size + 1));
+	if ((map = (char **)malloc(sizeof(char *) * (size + 1))) == NULL)
+		return (NULL);
 	map[size] = NULL;
 	i = 0;
 	while (i < size)
