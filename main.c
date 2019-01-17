@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/17 14:08:55 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/17 14:24:13 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,17 @@ int		main(int ac, char **av)
 			printf("Taille de la map (ORIGIN): %d\n\n", size);
 			map = create_map(size * 4);
 			lst = parse(av[1]);
-			if (!solving(&lst, map, size, 'A'))
+			while (lst)
 			{
-				ft_putendl("1 - Solving -> FAIL\n");
-				ft_putendl("2 - Resize map\n");
-				size++;
-				printf("Taille de la map (RESIZE): %d\n\n", size);
-				printf("Piece implacable:\t%c\n", lst->c);
+				if (!solving(lst, map, size, 'A'))
+				{
+					ft_putendl("1 - Solving -> FAIL\n");
+					ft_putendl("2 - Resize map\n");
+					size++;
+					printf("Taille de la map (RESIZE): %d\n\n", size);
+					printf("Piece implacable:\t%c\n", lst->c);
+				}
+				lst = lst->next;
 			}
 		}
 		print_map(map, size);

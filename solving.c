@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:47:40 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/17 14:18:43 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/17 14:27:21 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,41 +49,41 @@ void		place_t(t_tri *lst, char **map, int i, int j)
    map[j + lst->pos[3].y][i + lst->pos[3].x] = '.';
    }
 
-static void		go_to_char(t_tri **tetris, char c)
+static void		go_to_char(t_tri *tetris, char c)
 {
-	while ((*tetris)->next)
+	while (tetris->next)
 	{
-		if ((*tetris)->c == c)
+		if (tetris->c == c)
 			break ;
-		*tetris = (*tetris)->next;
+		tetris = tetris->next;
 	}
 }
 /*
  * BACKTRACK HERE
  */
 
-int		solving(t_tri **minos, char **map, int size, char c)
+int		solving(t_tri *minos, char **map, int size, char c)
 {
 	int i;
 	int j;
 	t_tri *start;
 
 	j = 0;
-	start = *minos;
-	go_to_char(minos, (*minos)->c);
+	start = minos;
+	go_to_char(minos, minos->c);
 	while (j < size)
 	{
 		i = 0;
 		while (i < size)
 		{
-			if (can_place(map, *minos, i, j, size))
+			if (can_place(map, minos, i, j, size))
 			{
-				place_t(*minos, map, i, j);
-				printf("Piece en cours:\t%c\n", (*minos->c);
+				place_t(minos, map, i, j);
+				printf("Piece en cours:\t%c\n", minos->c);
 				print_map(map, size);
-				if ((*minos)->next == NULL || solving(&start->next, map, size, c + 1))
+				if (minos->next == NULL || solving(start->next, map, size, c + 1))
 					return (1);
-				remove_t(*minos, map, i, j);
+				remove_t(minos, map, i, j);
 			}
 			i++;
 		}
