@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 19:15:10 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/16 19:25:55 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/17 14:01:46 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,24 @@ void	print_map(char **map, int size)
 char	**resize_map(char **map, int size)
 {
 	char	**new_map;
-	int		i;
 
-	new_map = NULL;
+	clean_map(map);
+	if ((new_map = create_map(size)) == NULL)
+		return (NULL);
+	return (new_map);
+}
+
+void	clean_map(char **map)
+{
+	int	i;
+
 	i = 0;
 	if (map && *map)
 	{
 		while (map[i])
-		{
-			free(map[i]);
-			map[i] = NULL;
-			i++;
-		}
+			free(map[i++]);
 		free(map);
-		if ((new_map = create_map(size)) == NULL)
-			return (NULL);
 	}
-	return (new_map);
 }
 
 char	**create_map(int size)

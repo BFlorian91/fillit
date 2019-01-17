@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/16 19:31:14 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/17 14:08:55 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int		main(int ac, char **av)
 	int		i;
 
 	i = 4;
+	size = input(av[1]); 
 	lst = NULL;
+	map = NULL;
 	start = lst;
 	if (ac != 2)
 	{
@@ -30,27 +32,20 @@ int		main(int ac, char **av)
 	}
 	if (ac == 2)
 	{
-		if ((size = input(av[1])))
 		{
 			printf("Taille de la map (ORIGIN): %d\n\n", size);
-			map = create_map(size);
+			map = create_map(size * 4);
 			lst = parse(av[1]);
-			while (lst)
+			if (!solving(&lst, map, size, 'A'))
 			{
-				if (!solving(lst, map, size))
-				{
-					ft_putendl("1 - Solving -> FAIL\n");
-					ft_putendl("2 - Resize map\n");
-					map = resize_map(map, size++);
-					printf("Taille de la map (RESIZE): %d\n\n", size);
-					printf("Piece implacable:\t%c\n", lst->c);
-				}
-				else
-					ft_putendl("3 - Solving -> OK\n");
-				lst = lst->next;
+				ft_putendl("1 - Solving -> FAIL\n");
+				ft_putendl("2 - Resize map\n");
+				size++;
+				printf("Taille de la map (RESIZE): %d\n\n", size);
+				printf("Piece implacable:\t%c\n", lst->c);
 			}
-			print_map(map, size);
 		}
+		print_map(map, size);
 	}
 	return (0);
 }
