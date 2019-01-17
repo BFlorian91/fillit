@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/17 14:23:55 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/17 17:46:56 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-/*
-typedef struct	s_map
-{
-	int		size;
-	char	**tab;
-}				t_map;
-*/
+#define RED	"\x1B[31m"
+#define GRN	"\x1B[32m"
+#define BLU "\x1B[34m"
+#define RES "\033[0m"
 
 typedef struct	s_point
 {
