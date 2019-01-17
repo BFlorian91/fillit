@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:43:53 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/16 21:10:21 by bod              ###   ########.fr       */
+/*   Updated: 2019/01/17 21:09:17 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-/*
 typedef struct	s_map
 {
+	char	**map;
 	int		size;
-	char	**tab;
 }				t_map;
-*/
 
 typedef struct	s_point
 {
@@ -43,10 +41,8 @@ t_tri			*parse(char *av);
 t_tri			*clean_lst(t_tri *lst);
 int				input(char *av);
 char			**create_map(int size);
-void			print_map(char **map, int size);
-void			ft_display(t_tri *lst);
-int				backtrack(t_tri *tetriminos,char **map, int size);
-int   			solve(t_tri *minos, char **map, int size);
-char			**resize_map(char **map, int size);
+void			print_map(t_map map);
+int				solving(t_tri *tetriminos, t_map map, char c);
+void			clean_map(t_map map);
 
 #endif

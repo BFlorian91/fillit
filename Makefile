@@ -6,7 +6,7 @@
 #    By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/09 16:42:03 by flbeaumo          #+#    #+#              #
-#    Updated: 2019/01/15 19:02:47 by bod              ###   ########.fr        #
+#    Updated: 2019/01/17 21:15:34 by flbeaumo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,10 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-all: $(OBJ)
-	@$(CC) $(SRCS) $(LIBFT) -o $(NAME) $(CFLAGS)
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@$(CC) $(SRCS) $(LIBFT) -o $@ $(CFLAGS)
 	@echo "\\033[1;34m FILLIT\033[0m				\033[0;32m[SUCESS] \033[0m"
 
 %.o: %.c $(LIBFT)
