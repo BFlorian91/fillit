@@ -6,13 +6,13 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/18 20:11:41 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/18 20:42:14 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_root(int nb)
+static int	ft_root(int nb)
 {
 	int i;
 
@@ -74,24 +74,24 @@ int			input(char *av)
 	int		ret;
 	char	buf[21];
 	int		cnt_tetri;
+	int		line;
 
 	fd = open(av, O_RDONLY);
 	cnt_tetri = 0;
+	line = 0;
 	if (fd == -1)
 		return (-1);
 	while ((ret = read(fd, buf, 21)))
 	{
 		buf[ret] = '\0';
-		if (buf[0] == '\n')
+		if ((!check_block(buf)) || (!check_tetri(buf)) || (buf[0] == '\n'))
 			return (0);
-		if (!check_block(buf))
-			return (0);
-		if (!check_tetri(buf))
-			return (0);
+		else if (check_block(buf))
+			line += check_block(buf);
 		cnt_tetri++;
 	}
-	/*if ((check_tetri(buf)) >= cnt_tetri)*/
-		/*return (0);*/
+	if (line - cnt_tetri * 4 != cnt_tetri - 1)
+		return (0);
 	close(fd);
 	return (ft_root(4 * cnt_tetri));
 }
