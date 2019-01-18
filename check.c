@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/18 20:54:23 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/18 21:04:00 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int			input(char *av)
 	cnt_tetri = 0;
 	line = 0;
 	if (fd == -1)
-		return (0);
+		return (-1);
 	while ((ret = read(fd, buf, 21)))
 	{
 		buf[ret] = '\0';

@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/18 20:52:44 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/18 21:04:23 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int ac, char **av)
 		ft_putstr("usage: fillit input_file\n");
 		return (1);
 	}
-	if (!(input(av[1])))
+	if ((input(av[1])) < 1)
 	{
 		ft_putstr("error\n");
 		return (1);
