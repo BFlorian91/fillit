@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/18 21:04:00 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/18 21:50:47 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ static int	check_tetri(char *buf)
 	count = 0;
 	while (i < 20)
 	{
+		if (!(i + 1 % 5) && i != 0)
+			if (buf[i] != '\n')
+				return (0);
 		if (buf[i] == '#')
 		{
 			(i + 1) < 20 && buf[i + 1] == '#' ? count++ : count;
