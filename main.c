@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/17 21:04:13 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/18 19:05:44 by bod              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ int		main(int ac, char **av)
 		ft_putstr("usage: fillit input_file\n");
 		return (0);
 	}
-	if ((map.size = input(av[1])) == -1)
+	if (!(input(av[1])))
 	{
-		ft_putstr("Invalid tetriminos\n");
-		return (0);
+		ft_putstr("error\n");
+		ft_putnbr(input(av[1]));
+		ft_putchar('\n');
+		return (1);
 	}
-	if ((map.map = create_map(16)) == NULL)
-		return (0);
 	lst = parse(av[1]);
+	if ((map.map = create_map(26)) == NULL)
+		return (0);
 	while (!solving(lst, map, 'A'))
-	{
 		(map.size)++;
-	}
 	print_map(map);
 	clean_map(map);
 	return (0);
