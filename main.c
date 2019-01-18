@@ -6,7 +6,7 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:44:45 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/18 18:55:33 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/18 19:37:05 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int		main(int ac, char **av)
 	else if (!(input(av[1])))
 	{
 		ft_putstr("error\n");
-		ft_putnbr(input(av[1]));
-		ft_putchar('\n');
 		return (1);
 	}
 	lst = parse(av[1]);

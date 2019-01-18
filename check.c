@@ -6,11 +6,21 @@
 /*   By: flbeaumo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/12 14:49:11 by flbeaumo          #+#    #+#             */
-/*   Updated: 2019/01/18 18:22:07 by flbeaumo         ###   ########.fr       */
+/*   Updated: 2019/01/18 20:11:41 by flbeaumo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int	ft_root(int nb)
+{
+	int i;
+
+	i = 0;
+	while (i * i < nb)
+		i++;
+	return (i);
+}
 
 static int	check_block(char *buf)
 {
@@ -72,12 +82,16 @@ int			input(char *av)
 	while ((ret = read(fd, buf, 21)))
 	{
 		buf[ret] = '\0';
+		if (buf[0] == '\n')
+			return (0);
 		if (!check_block(buf))
 			return (0);
 		if (!check_tetri(buf))
 			return (0);
 		cnt_tetri++;
 	}
+	/*if ((check_tetri(buf)) >= cnt_tetri)*/
+		/*return (0);*/
 	close(fd);
-	return (ft_sqrt(4 * cnt_tetri));
+	return (ft_root(4 * cnt_tetri));
 }
